@@ -30,11 +30,11 @@
       var globalUnityInstance;
       const hideFullScreenButton = "1";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/newBuild.loader.js";
+      const loaderUrl = buildUrl + "/new_new_build.loader.js";
       const config = {
-        dataUrl: buildUrl + "/newBuild.data",
-        frameworkUrl: buildUrl + "/newBuild.framework.js",
-        codeUrl: buildUrl + "/newBuild.wasm",
+        dataUrl: buildUrl + "/new_new_build.data",
+        frameworkUrl: buildUrl + "/new_new_build.framework.js",
+        codeUrl: buildUrl + "/new_new_build.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Aggr.io",
         productName: "3DMuseum",
@@ -93,13 +93,11 @@
         });
       };
       document.body.appendChild(script);
-
       function sendToUnity() {
         let x = document.getElementById("fname");
         alert(x.value);
         globalUnityInstance.SendMessage('Main Camera','ReadStringInput', x.value);
       }
-
     </script>
   </body>
 </html>
