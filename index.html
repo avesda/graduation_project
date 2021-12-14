@@ -22,14 +22,19 @@
       </div>
     </div>
     <div id="unity-fullscreen-button" style="display: none;"></div>
+    <form action="" method="get">
+      <input id="fname" name="search" type="text">
+      <input type="button" value="Search" onclick="return sendToUnity();">
+    </form>
     <script>
+      var globalUnityInstance;
       const hideFullScreenButton = "1";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/build.loader.js";
+      const loaderUrl = buildUrl + "/newBuild.loader.js";
       const config = {
-        dataUrl: buildUrl + "/build.data",
-        frameworkUrl: buildUrl + "/build.framework.js",
-        codeUrl: buildUrl + "/build.wasm",
+        dataUrl: buildUrl + "/newBuild.data",
+        frameworkUrl: buildUrl + "/newBuild.framework.js",
+        codeUrl: buildUrl + "/newBuild.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Aggr.io",
         productName: "3DMuseum",
@@ -73,6 +78,7 @@
           progressBarEmpty.style.display = "";
           progressBarFull.style.width = `${100 * progress}%`;
         }).then((unityInstance) => {
+          globalUnityInstance = unityInstance;
           loadingCover.style.display = "none";
           if (canFullscreen) {
             if (!hideFullScreenButton) {
@@ -87,6 +93,13 @@
         });
       };
       document.body.appendChild(script);
+
+      function sendToUnity() {
+        let x = document.getElementById("fname");
+        alert(x.value);
+        globalUnityInstance.SendMessage('Main Camera','ReadStringInput', x.value);
+      }
+
     </script>
   </body>
 </html>
