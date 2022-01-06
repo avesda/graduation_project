@@ -1,0 +1,14 @@
+package-lock.json
+webpack.config.js
+config
+dist
+test
+.eslintrc.js
+.eslintignore
+.gitignore
+.vscode
+node_modules
+.gitattributes
+my-algo.png
+tsconfig.json
+brand-kit

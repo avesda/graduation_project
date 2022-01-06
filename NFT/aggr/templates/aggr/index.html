@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>aggr</title>
+        <!-- CSS imports -->
+        <link href=" {% static 'aggr/css/nav.css' %} " rel="stylesheet">
+        <link href=" {% static 'aggr/css/style.css' %} " rel="stylesheet">
+        <link href=" {% static 'aggr/css/sections.css' %} " rel="stylesheet">
+
+        <!-- font imports -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+        <!-- Favicon imports -->
+        <link rel="shortcut icon" href="{% static 'aggr/icon/favicon-196x196.png' %}"/>
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+
+        <!-- React CDN Link -->
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+        <!-- React-DOM CDN Link -->
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+        <!-- Babel CDN Link -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <!-- JS imports  -->
+        <script src="{% static 'aggr/js/overlay.js' %}"></script>
+
+        <!-- import algorand connect -->
+        <script src="{% static 'aggr/blockchains/algorand/myalgo.min.js' %}">
+            import MyAlgoConnect from '@randlabs/myalgo-connect';
+        </script>
+    </head>
+
+    <body id="body">
+        <nav id='nav'>
+            <div class="nav-left">
+                <a href="{% url 'index' %}">
+                    <svg id="logo" width="97" height="79" viewBox="0 0 97 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M44 35H2V19.044L32.5 23.2143L2 2H44V35Z" stroke="#5BFF7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M95 2H53V35H95V19.044" stroke="#5BFF7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M64.5 20.2143L95 16.044V35H53V2H95L83.5 17.6164L64.5 20.2143ZM64.5 20.2143L66 27" stroke="#5BFF7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13.5 62.2143L44 58.044V77H2L2 44H44L32.5 59.6164L13.5 62.2143ZM13.5 62.2143L15 69" stroke="#5BFF7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 25.5L20.5 28.5" stroke="#5BFF7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M53 44H95V59.956L64.5 55.7857L95 77H53V44Z" stroke="#5BFF7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M76 50L89.5 53" stroke="#5BFF7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                
+                <div id="search">
+                    <form action="/action_page.php">
+                        <input type="text" name="search" size="32">
+                    </form>
+                </div>
+            </div>
+
+    
+            <ul class="nav-right">
+                <li><a href="#my-gallery">MY GALLERY</a></li>
+                <li><a href="#marketplace">MARKETPLACE</a></li>
+                <li id="connect-btn" onclick="return addOverlay();">CONNECT WALLET</li>
+            </ul>
+        </nav>
+
+        <h1 id="main-heading">Create your own <span class="neon-green">Meta</span> Gallery.</h1>
+        <h2 id="sub-heading">A single place for all your NFTs from different blockchains</h2>
+
+        <!-- overlay for connections -->
+        <div id="connect-wallet-child">
+            <div id="upper-overlay">
+                <h2>Connect Wallet</h2>
+                <div id="close-button" onclick="return removeOverlay();">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.66602 7.66797H52.3327V52.3346H7.66602V7.66797ZM6.66602 6.66797H7.66602H52.3327H53.3327V7.66797V52.3346V53.3346H52.3327H7.66602H6.66602V52.3346V7.66797V6.66797ZM46.3125 47.0215L29.9993 30.7084L13.6862 47.0215L12.9791 46.3144L29.2922 30.0013L12.9791 13.6882L13.6862 12.9811L29.9993 29.2942L46.3125 12.9811L47.0196 13.6882L30.7065 30.0013L47.0196 46.3144L46.3125 47.0215Z" fill="#50DF6B" fill-opacity="0.5"/>
+                        <path d="M52.3327 7.66797H53.3327V6.66797H52.3327V7.66797ZM7.66602 7.66797V6.66797H6.66602V7.66797H7.66602ZM52.3327 52.3346V53.3346H53.3327V52.3346H52.3327ZM7.66602 52.3346H6.66602V53.3346H7.66602V52.3346ZM6.66602 6.66797V5.66797H5.66602V6.66797H6.66602ZM53.3327 6.66797H54.3327V5.66797H53.3327V6.66797ZM53.3327 53.3346V54.3346H54.3327V53.3346H53.3327ZM6.66602 53.3346H5.66602V54.3346H6.66602V53.3346ZM29.9993 30.7084L30.7065 30.0013L29.9993 29.2942L29.2922 30.0013L29.9993 30.7084ZM46.3125 47.0215L45.6054 47.7286L46.3125 48.4358L47.0196 47.7286L46.3125 47.0215ZM13.6862 47.0215L12.9791 47.7286L13.6862 48.4358L14.3933 47.7286L13.6862 47.0215ZM12.9791 46.3144L12.272 45.6073L11.5649 46.3144L12.272 47.0215L12.9791 46.3144ZM29.2922 30.0013L29.9993 30.7084L30.7065 30.0013L29.9993 29.2942L29.2922 30.0013ZM12.9791 13.6882L12.272 12.9811L11.5649 13.6882L12.272 14.3953L12.9791 13.6882ZM13.6862 12.9811L14.3933 12.274L13.6862 11.5669L12.9791 12.274L13.6862 12.9811ZM29.9993 29.2942L29.2922 30.0013L29.9993 30.7084L30.7065 30.0013L29.9993 29.2942ZM46.3125 12.9811L47.0196 12.274L46.3125 11.5669L45.6054 12.274L46.3125 12.9811ZM47.0196 13.6882L47.7267 14.3953L48.4338 13.6882L47.7267 12.9811L47.0196 13.6882ZM30.7065 30.0013L29.9993 29.2942L29.2922 30.0013L29.9993 30.7084L30.7065 30.0013ZM47.0196 46.3144L47.7267 47.0215L48.4338 46.3144L47.7267 45.6073L47.0196 46.3144ZM52.3327 6.66797H7.66602V8.66797H52.3327V6.66797ZM53.3327 52.3346V7.66797H51.3327V52.3346H53.3327ZM7.66602 53.3346H52.3327V51.3346H7.66602V53.3346ZM6.66602 7.66797V52.3346H8.66602V7.66797H6.66602ZM7.66602 5.66797H6.66602V7.66797H7.66602V5.66797ZM52.3327 5.66797H7.66602V7.66797H52.3327V5.66797ZM53.3327 5.66797H52.3327V7.66797H53.3327V5.66797ZM54.3327 7.66797V6.66797H52.3327V7.66797H54.3327ZM54.3327 52.3346V7.66797H52.3327V52.3346H54.3327ZM54.3327 53.3346V52.3346H52.3327V53.3346H54.3327ZM52.3327 54.3346H53.3327V52.3346H52.3327V54.3346ZM7.66602 54.3346H52.3327V52.3346H7.66602V54.3346ZM6.66602 54.3346H7.66602V52.3346H6.66602V54.3346ZM5.66602 52.3346V53.3346H7.66602V52.3346H5.66602ZM5.66602 7.66797V52.3346H7.66602V7.66797H5.66602ZM5.66602 6.66797V7.66797H7.66602V6.66797H5.66602ZM29.2922 31.4155L45.6054 47.7286L47.0196 46.3144L30.7065 30.0013L29.2922 31.4155ZM14.3933 47.7286L30.7065 31.4155L29.2922 30.0013L12.9791 46.3144L14.3933 47.7286ZM12.272 47.0215L12.9791 47.7286L14.3933 46.3144L13.6862 45.6073L12.272 47.0215ZM28.5851 29.2942L12.272 45.6073L13.6862 47.0215L29.9993 30.7084L28.5851 29.2942ZM12.272 14.3953L28.5851 30.7084L29.9993 29.2942L13.6862 12.9811L12.272 14.3953ZM12.9791 12.274L12.272 12.9811L13.6862 14.3953L14.3933 13.6882L12.9791 12.274ZM30.7065 28.5871L14.3933 12.274L12.9791 13.6882L29.2922 30.0013L30.7065 28.5871ZM45.6054 12.274L29.2922 28.5871L30.7065 30.0013L47.0196 13.6882L45.6054 12.274ZM47.7267 12.9811L47.0196 12.274L45.6054 13.6882L46.3125 14.3953L47.7267 12.9811ZM31.4136 30.7084L47.7267 14.3953L46.3125 12.9811L29.9993 29.2942L31.4136 30.7084ZM47.7267 45.6073L31.4136 29.2942L29.9993 30.7084L46.3125 47.0215L47.7267 45.6073ZM47.0196 47.7286L47.7267 47.0215L46.3125 45.6073L45.6054 46.3144L47.0196 47.7286Z" fill="#50DF6B" fill-opacity="0.5"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div id="mid-overlay">
+                <h3>
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.16283 25L7.64602 18.739L11.1292 12.5L14.5911 6.23898L15.1646 5.24691L15.4195 6.23898L16.4814 10.3616L15.292 12.5L11.8088 18.739L8.3469 25H12.5097L15.9929 18.739L17.7982 15.4982L18.6478 18.739L20.2619 25H24L22.3858 18.739L20.7717 12.5L20.3469 10.8907L22.9381 6.23898H19.1575L19.0301 5.77601L17.7133 0.661376L17.5434 0H13.9115L13.8265 0.132275L10.4283 6.23898L6.94513 12.5L3.48319 18.739L0 25H4.16283Z" fill="#E4E4E7"/>
+                    </svg>&nbsp;Algorand official wallet
+                </h3>
+            </div>
+            
+            <div id="lower-overlay">
+                <div id="connect-form">
+                    <form action="{% url 'test' %}" method="post">
+                        {% csrf_token %}
+                        {{ form }}
+
+                        <button id="login-btn" type="submit" class="btn">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+
+        <section id="#trending-carousel">
+            <h2 class="section-heading">Trending Galleries</h2>
+            <div id="carousel">  
+            </div>            
+        </section>
+
+
+        <script type="text/babel">
+            function MakeTrendingCard(props) {
+                return (
+                    <div class="card-border">
+                        <div class="card">
+                            <h2 class="gallery-name">{props.name}</h2>
+                            <p class="desc">{props.desc}</p>
+                            <div class="gallery-info">
+                                <svg width="37" height="31" viewBox="0 0 37 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.65625 30.3984H16.5124V24.0941L4.99782 25.7418L16.5124 17.36H0.65625L0.65625 30.3984Z" fill="white"/>
+                                    <path d="M20.2852 17.3555H36.1413V23.6598L24.6267 22.0121L36.1413 30.3939H20.2852V17.3555Z" fill="white"/>
+                                    <path d="M20.2852 13.8047L36.1413 13.8047V7.50038L24.6267 9.1481L36.1413 0.766229L20.2852 0.766229V13.8047Z" fill="white"/>
+                                    <path d="M16.5117 13.8047L0.655539 13.8047V7.50038L12.1701 9.1481L0.655539 0.766229L16.5117 0.766229V13.8047Z" fill="white"/>
+                                </svg>
+                                <p>{props.handle}</p>
+                            </div>
+                            <div class="enter-btn">Enter the gallery</div>
+                        </div>
+                    </div>
+                );
+            }
+            
+            function nextImg() {
+                alert("hi");
+            }
+
+            function prvImg() {
+                alert("bye");
+            }
+
+            function TrendingGalleries() {
+                return (
+                    <div id="carousel-parent">
+                        <div id="carousel-child">
+                            <MakeTrendingCard name="Gallery 1" handle="@gal1" desc="Heylo this is a gallery with its description useless stuff basically"/>
+                            <MakeTrendingCard name="Virtual Gallery" handle="@vgallery" desc="Heylo this is a gallery with its description useless stuff basically"/>
+                            <MakeTrendingCard name="XOXO" handle="@xoxo" desc="Heylo this is a gallery with its description useless stuff basically"/>
+                            <MakeTrendingCard name="siiiiiiiiz" handle="@you" desc="Heylo this is a gallery with its description useless stuff basically"/>
+                        </div>
+                        <div id="carousel-btns">
+                            <p onClick={nextImg}> nxt </p>
+                            <p onClick={prvImg}> prv </p>
+                        </div>
+                    </div>                  
+                );
+            }
+            ReactDOM.render(<TrendingGalleries />, document.querySelector("#carousel"));
+        </script>
+    </body>
+</html>
+
+

@@ -1,0 +1,138 @@
+*{
+    scroll-behavior: smooth;
+    margin:0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Righteous', cursive;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+:root {
+    --main-bg-color: #000000;
+    --green-neon: #5BFF7B;
+    --text: #E4E4E7;
+}
+
+body {
+    background-color: #000000;
+    z-index: 1;
+}
+
+#main-heading, #sub-heading {
+    color: var(--text);  
+}
+
+#main-heading {
+    font-size: 72px;
+    margin-left: 20px;
+    margin-top: 150px;
+}
+
+#sub-heading {
+    font-size: 32px;
+    margin-left: 25px;
+}
+
+.neon-green {
+    color: var(--green-neon); 
+    font-size: 72px;
+}
+
+/* carousel related stuff */
+#carousel {
+    margin-left: 100px;
+}
+
+#carousel-parent {
+    display: flex;
+    flex-direction: column;
+}
+
+#carousel-child {
+    display: flex;
+    flex-direction: row;
+}
+
+/* card starts */
+.card-border {
+    width: 450px;
+    height: 250px;
+    margin: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, rgb(44, 43, 43), white);
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.card {
+    width: 444px;
+    height: 244px;
+    background-color: var(--main-bg-color);
+    padding: 1px;
+    color: var(--text);
+    border-radius: 10px;
+}
+
+.gallery-name{
+    font-size: 32px;
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+.desc {
+    font-size: 16px;
+    margin-left: 25px;
+    margin-top: 6px;
+    width: 70%;
+}
+
+.gallery-info {
+    margin-left: 25px;
+    margin-top: 40px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.gallery-info > svg {
+    margin-right: 10px;
+}
+
+.enter-btn {
+    margin-top: 28px;
+    margin-left: 20px;
+    width: calc(100% - 36px);
+    height: 39px;
+    border-style: solid;
+    border-width: 0.5px;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: var(--green-neon);
+    text-align: center;
+    padding-top: 7px;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text);
+}
+
+.enter-btn:hover {
+    color: var(--text);
+    text-shadow: 0.5px 0 0 #fff;
+}
+/* card ends */
+
+#carousel-btns {
+    color: var(--text);
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    margin-left: 50px;
+}
+
+#carousel-btns > p {
+    font-size: 32px;
+    cursor: pointer;
+    margin-left: 6px;
+    margin-right: 6px;
+}
