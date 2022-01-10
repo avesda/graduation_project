@@ -1,3 +1,4 @@
+// show the connect overlay
 function addOverlay() {
   var overlay = document.getElementById("connect-wallet-child");
   var body = document.getElementById("body");
@@ -6,6 +7,7 @@ function addOverlay() {
   overlay.style.opacity = "1";
 }
 
+// remove the connect overlay
 function removeOverlay() {
   var overlay = document.getElementById("connect-wallet-child");
   var body = document.getElementById("body");

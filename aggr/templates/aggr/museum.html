@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>aggr.io</title>
+
+    <!-- Other imports -->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- Favicon imports -->
+    <link rel="shortcut icon" href="{% static 'aggr/icon/favicon-196x196.png' %}"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+
+    <!-- CSS imports -->
+    <link rel="stylesheet" href=" {% static 'aggr/css/museum.css' %} ">
+
+    <!-- JS imports  -->
+    <script src="{% static 'aggr/js/museum.js' %}"></script>
+  </head>
+
+  <body class="dark" onload="sendToUnity();">
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas"></canvas>
+    </div>
+
+    <div id="loading-cover" style="display:none;">
+      <div id="unity-loading-bar">
+        <div id="unity-logo"><img src="{% static 'aggr/imgs/logo.png' %}"></div>
+        <div id="unity-progress-bar-empty" style="display: none;">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <div id="unity-fullscreen-button" style="display: none;"></div>
+    
+  </body>
+</html>
