@@ -19,7 +19,7 @@ body {
     z-index: 1;
 }
 
-#main-heading, #sub-heading {
+#main-heading, #sub-heading, #sub-sub-heading {
     color: var(--text);  
 }
 
@@ -34,24 +34,27 @@ body {
     margin-left: 25px;
 }
 
+#sub-sub-heading {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 75vw;
+}
+
+#sub-sub-heading > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#sub-sub-heading > ul > li{
+    text-decoration: none;
+    list-style: none;
+    font-size: 30px;
+}
+
 .neon-green {
     color: var(--green-neon); 
     font-size: 72px;
-}
-
-/* carousel related stuff */
-#carousel {
-    margin-left: 100px;
-}
-
-#carousel-parent {
-    display: flex;
-    flex-direction: column;
-}
-
-#carousel-child {
-    display: flex;
-    flex-direction: row;
 }
 
 /* card starts */
@@ -121,18 +124,3 @@ body {
     text-shadow: 0.5px 0 0 #fff;
 }
 /* card ends */
-
-#carousel-btns {
-    color: var(--text);
-    display: flex;
-    justify-content: space-between;
-    width: 20%;
-    margin-left: 50px;
-}
-
-#carousel-btns > p {
-    font-size: 32px;
-    cursor: pointer;
-    margin-left: 6px;
-    margin-right: 6px;
-}

@@ -1,0 +1,28 @@
+#carousel {
+    margin-left: 100px;
+}
+
+#carousel-parent {
+    display: flex;
+    flex-direction: column;
+}
+
+#carousel-child {
+    display: flex;
+    flex-direction: row;
+}
+
+#carousel-btns {
+    color: var(--text);
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    margin-left: 50px;
+}
+
+#carousel-btns > p {
+    font-size: 32px;
+    cursor: pointer;
+    margin-left: 6px;
+    margin-right: 6px;
+}

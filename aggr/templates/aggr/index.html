@@ -2,11 +2,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-        <title>aggr.gallery</title>
+        <title>aggr</title>
         <!-- CSS imports -->
         <link href=" {% static 'aggr/css/nav.css' %} " rel="stylesheet">
         <link href=" {% static 'aggr/css/style.css' %} " rel="stylesheet">
         <link href=" {% static 'aggr/css/sections.css' %} " rel="stylesheet">
+        <link href=" {% static 'aggr/css/carousel.css' %} " rel="stylesheet">
+        <link href=" {% static 'aggr/css/recc.css' %} " rel="stylesheet">
 
         <!-- font imports -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +29,7 @@
         <!-- JS imports  -->
         <script src="{% static 'aggr/js/overlay.js' %}"></script>
         <script type="text/babel" src="{% static 'aggr/js/carousel.js' %}"></script>
+        <script type="text/babel" src="{% static 'aggr/js/recc.js' %}"></script>
 
         <!-- import algorand connect -->
         <script src="{% static 'aggr/blockchains/algorand/myalgo.min.js' %}">
@@ -99,11 +102,18 @@
             </div>
         </div>
         
-        <!-- trending and reccomended museums shown here using React -->
+        <!-- trending museums shown here using React -->
         <section id="#trending-carousel">
             <h2 class="section-heading">Trending Galleries</h2>
             <div id="carousel">  
             </div>            
+        </section>
+
+        <!-- reccomended  museums shown here using React -->
+        <section id="recc">
+            <h2 class="section-heading">Discover more experiences</h2>
+            <div id="showing-area">
+            </div>
         </section>
 
     </body>

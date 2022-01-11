@@ -1,0 +1,20 @@
+#showing-area {
+    margin-left: 100px;
+}
+
+/*
+#recc-parent {
+    display: flex;
+    flex-direction: column;
+}*/
+
+#recc-child {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#sub-sub-heading > ul > li:hover {
+    color: var(--green-neon);
+    text-shadow: 0.5px 0 0 var(--green-neon);
+    cursor: pointer;
+}
