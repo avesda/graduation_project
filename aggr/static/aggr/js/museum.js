@@ -68,9 +68,6 @@ document.body.appendChild(script);
 function sendToUnity() {
   address = window.location.href.split('=')[1]
   alert(address);
-  globalUnityInstance.SendMessage('Camera','SetNewAddress', address);
+  //globalUnityInstance.SendMessage('Camera','SetNewAddress', address);
 }
 
-window.addEventListener('load', sendToUnity() {
-    console.log('All assets loaded')
-});
