@@ -18,10 +18,12 @@
   </head>
 
   <body class="dark">
+    <!-- the initial dark container seen -->
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas"></canvas>
     </div>
 
+    <!-- the loading screen showing the logo and progress bar -->
     <div id="loading-cover" style="display:none;">
       <div id="unity-loading-bar">
         <div id="unity-logo"><img src="{% static 'aggr/imgs/logo.png' %}"></div>
@@ -35,6 +37,7 @@
     <div id="unity-fullscreen-button" style="display: none;"></div>
     
     <script>
+      // showing a template inside html page
       const hideFullScreenButton = "";
       const buildUrl = "{% static 'aggr/Build' %}";
       const loaderUrl = buildUrl + "/TestBuild.loader.js";
